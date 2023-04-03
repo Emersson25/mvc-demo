@@ -19,4 +19,7 @@ if (isset($_POST['operacion'])){
         //Enviamos el resultado a la vista con JSON
         echo json_encode($resultado);
     }
+    if ($_POST['operacion'] == 'buscarID'){
+        
+    }
 }

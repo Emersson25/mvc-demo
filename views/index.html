@@ -20,7 +20,7 @@
         <button type="button" class="btn btn-success btn-sm" id="boton pruebas">boton pruebas</button>
         <hr>
         
-        <table  class="table table-striped table-sm" id="table-cursos">
+        <table  class="table table-striped table-sm" id="tabla-cursos">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -55,9 +55,39 @@
         function mostrarDatos(){
            // comunicacion asincronas/AJAX con el controlador
            $.ajax({
-            
-           }); 
-        }
+             url: '../controllers/curso.controller.php',
+             type: 'POST',
+             data: {
+                operacion: 'listar'               
+             },
+             dataType: 'JSON',
+             success: function(result){
+                if (result.length > 0){
+                    //console.log(result);
+                    const listaCursos = result;
+
+                    // Antes de ejecutar el recorrido  de registro, reiniciar la tabla 
+                    $("#tabla-cursos tbody").html("");
+
+                    listaCursos.forEach(curso => {
+                        // Construimos una nueva
+                        let nuevaFila = ``;
+                        nuevaFila += `<tr>`;
+                        nuevaFila += `<td>${curso['id']}</td>`;
+                        nuevaFila += `<td>${curso['nombre']}</td>`;
+                        nuevaFila += `<td>${curso['nivel']}</td>`;
+                        nuevaFila += `<td>${curso['precio']}</td>`;
+                        nuevaFila += `<td>${curso['horas']}</td>`;
+                        nuevaFila += `</tr>`;
+                        // Agregamos la nueva fila al cuerpo de la tabla
+                       $("#tabla-cursos tbody").append(nuevaFila);
+                    });
+                    
+                }
+
+             } //fin success
+           });  //fin ajax
+        } // fin mostrarDatos
 
         //controlamos el boton
         $("#cargar-datos").click(mostrarDatos);
