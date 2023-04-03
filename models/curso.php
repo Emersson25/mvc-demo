@@ -1,4 +1,5 @@
 <?php
+// Clase = Planilla => creamos nuevos objetos  Compone => atributo y metodo (verbo)
 class Curso{
 
     // Atributo
@@ -49,8 +50,10 @@ class Curso{
         
     ];
 
-    //Metodos
+    //Metodos (listar los cursos)
     public function listarCursos(){
+      // return $this-> data;
+      //Instrucciones
         return $this->data;
     }
 }

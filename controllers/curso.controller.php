@@ -4,7 +4,7 @@
 require_once "../models/curso.php";
 
 // Verificar si existe una operacion en curso
-// GET - POST - REQUEST
+// GET - POST - REQUEST  (isset determina si existe un objeto)
 if (isset($_POST['operacion'])){
     
     //Instancia de la clase curso
